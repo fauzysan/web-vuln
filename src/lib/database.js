@@ -1,8 +1,8 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+import path from 'path';
+import { Database } from 'sqlite3';
 
-const dbPath = path.resolve('./vulnerable.db');
-const db = new sqlite3.Database(dbPath);
+const dbPath = path.join(process.cwd(), 'public', 'database.db');
+const db = new Database(dbPath);
 
 db.serialize(() => {
     db.run(
