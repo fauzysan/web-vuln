@@ -1,8 +1,6 @@
-import path from 'path';
-import { Database } from 'sqlite3';
+const sqlite3 = require('sqlite3').verbose();
 
-const dbPath = path.join(process.cwd(), 'public', 'database.db');
-const db = new Database(dbPath);
+const db = new sqlite3.Database(':memory:');
 
 db.serialize(() => {
     db.run(
